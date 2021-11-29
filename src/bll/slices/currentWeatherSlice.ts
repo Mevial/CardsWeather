@@ -10,7 +10,8 @@ type CurrentWeather = {
     cities: CityType[],
     weather: Weather,
     isLoading: boolean,
-    response: Response
+    response: Response,
+    toggle: boolean
 }
 
 type Response = {
@@ -57,12 +58,16 @@ const initialState: CurrentWeather = {
         status: 0,
         message: '',
     },
+    toggle: false
 };
 
 const currentWeatherSlice = createSlice({
     name: 'current-weather',
     initialState,
     reducers: {
+        changeToggle(state, action:any) {
+            state.toggle = action.payload
+        },
         fetchCurrentWeather(state) {
             state.isLoading = true
         },
@@ -116,7 +121,8 @@ const currentWeatherSlice = createSlice({
 export const {
     removeWeatherCard,
     addCityWeatherCard,
-    updateCityWeatherCard
+    updateCityWeatherCard,
+    changeToggle
 } = currentWeatherSlice.actions
 
 export default currentWeatherSlice.reducer
@@ -167,7 +173,6 @@ export const updateWeatherCardId =
     (cityId: number) => async (dispatch: AppDispatch) => {
         try {
             dispatch(currentWeatherSlice.actions.fetchCurrentWeather()) //dispatch action fetchCurrent(status=true)
-
             const res = await weatherAPI.getCurrentWeatherById(cityId) //have response
             console.log(res.data.id)
             dispatch(updateCityWeatherCard({

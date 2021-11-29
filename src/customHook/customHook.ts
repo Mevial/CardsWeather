@@ -7,4 +7,3 @@ export const useCustomSelector: TypedUseSelectorHook<RootState> = useSelector
 
 export const selectCurrentWeatherData = (state: RootState) => state.currentWeatherSliceReducer
 
-

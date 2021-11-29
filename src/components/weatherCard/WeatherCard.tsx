@@ -25,15 +25,10 @@ export const WeatherCard = ({
     const deleteOneCty = (cityId: number) => {
         dispatch(removeWeatherCard(cityId))
     }
-
     const refreshOneCity = (id: number) => {
         dispatch(updateWeatherCardId(id))
     }
 
-    // const deleteOneCity = (cityId: number) => {
-    //     dispatch(removeWeatherCard({id: 625144, press: 1, temp: 1, country: 'da', speed: 1, humidity: 1, name: 'das'}))
-    // }
-//dispatch thunk
 
     return (
         <>
@@ -47,7 +42,6 @@ export const WeatherCard = ({
                             const Pressure = city.press
                             const SpeedWind = city.speed
                             const CityId = city.id
-
                             return (
                                 <div key={city.id}>
                                     <Card sx={{minWidth: 275, minHeight: 250, maxWidth: 350, maxHeight: 300}}>
@@ -72,11 +66,13 @@ export const WeatherCard = ({
                                             </Typography>
                                         </CardContent>
                                         <CardActions>
-                                            <Button variant="contained" size="small" color={"warning"} className='Button-Weather'
+                                            <Button variant="contained" size="small" color={"warning"}
+                                                    className='Button-Weather'
                                                     onClick={() => {
                                                         deleteOneCty(CityId)
                                                     }}>Delete</Button>
-                                            <Button variant="contained" size="small" color={"success"} className='Button-Weather'
+                                            <Button variant="contained" size="small" color={"success"}
+                                                    className='Button-Weather'
                                                     onClick={() => {
                                                         refreshOneCity(CityId)
                                                     }}>Refresh</Button>

@@ -13,7 +13,7 @@ function App() {
         dispatch(fetchCurrentWeather('Minsk'))
     }, [])
 
-    const {weather} = useCustomSelector(selectCurrentWeatherData)
+        const {weather} = useCustomSelector(selectCurrentWeatherData)
 
     // const [lat, setLat] = useState([]);
     // const [long, setLong] = useState([]);
