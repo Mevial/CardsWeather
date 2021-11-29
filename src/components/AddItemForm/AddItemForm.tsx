@@ -57,13 +57,10 @@ export const AddItemForm = React.memo(function ({addItem}: AddItemFormPropsType)
         if (cities.length > 0) {
             id = setInterval(() => {
                 console.log('tick')
-                for (let i = 0; i >= cities.length - 1; i++) {
+                for (let i = 0; i < cities.length; i++) {
                     dispatch(updateWeatherCardId((cities[i].id)))
-                    return () => clearInterval(id)
                 }
-            }, 1000)
-
-
+            }, 5000)
             return () => clearInterval(id)
         }
     }, [toggle])

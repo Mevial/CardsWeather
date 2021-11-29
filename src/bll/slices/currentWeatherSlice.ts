@@ -65,7 +65,7 @@ const currentWeatherSlice = createSlice({
     name: 'current-weather',
     initialState,
     reducers: {
-        changeToggle(state, action:any) {
+        changeToggle(state, action: PayloadAction<boolean>) {
             state.toggle = action.payload
         },
         fetchCurrentWeather(state) {
@@ -108,6 +108,7 @@ const currentWeatherSlice = createSlice({
                 console.log(action.payload)
             }
         },
+
         // updateTaskAC(state, action: PayloadAction<{ taskId: string, model: UpdateDomainTaskModelType, todolistId: string }>) {
         //     const tasks = state[action.payload.todolistId]
         //     const index = tasks.findIndex(t => t.id === action.payload.taskId)
