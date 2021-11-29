@@ -3,6 +3,7 @@ import {AppDispatch} from "../store";
 import {weatherAPI} from "../../dal/weatherAPI";
 import {CityType, Weather} from "../../types/types";
 import {AxiosResponse} from "axios";
+import moment from "moment";
 
 
 type CurrentWeather = {
@@ -145,6 +146,7 @@ export const fetchCurrentWeather =
                     humidity: res.data.main.humidity,
                     press: res.data.main.pressure,
                     speed: res.data.wind.speed,
+                    time: moment().format('MMMM Do YYYY, h:mm:ss a')
                 }
             }))
             console.log(res.data)
@@ -155,7 +157,38 @@ export const fetchCurrentWeather =
                 dispatch(currentWeatherSlice.actions.fetchCurrentWeatherError(res))
             }
         } catch (error) {
+//error.request - найти статус код, диспатчим и прокидываем в компоненту
+            console.log((error))
+        }
 
+    };
+
+export const updateWeatherCardId =
+    (cityId: number) => async (dispatch: AppDispatch) => {
+        try {
+            dispatch(currentWeatherSlice.actions.fetchCurrentWeather()) //dispatch action fetchCurrent(status=true)
+
+            const res = await weatherAPI.getCurrentWeatherById(cityId) //have response
+            console.log(res.data.id)
+            dispatch(updateCityWeatherCard({
+                name: res.data.name,
+                id: res.data.id,
+                country: res.data.sys.country,
+                temp: res.data.main.temp,
+                humidity: res.data.main.humidity,
+                press: res.data.main.pressure,
+                speed: res.data.wind.speed,
+                time: moment().format('MMMM Do YYYY, h:mm:ss a')
+            }))
+            console.log(res.data)
+            if (res.status === 200) {
+                dispatch(currentWeatherSlice.actions.fetchCurrentWeatherSuccess(res))
+
+            } else {
+                dispatch(currentWeatherSlice.actions.fetchCurrentWeatherError(res))
+            }
+        } catch (error) {
+//error.request - найти статус код, диспатчим и прокидываем в компоненту
             console.log((error))
         }
 

@@ -40,4 +40,5 @@ export type CityType = {
     humidity: number,
     press: number,
     speed: number
+    time: string
 }

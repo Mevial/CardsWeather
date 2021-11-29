@@ -4,11 +4,10 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {CityType, Weather} from "../../types/types";
-import moment from "moment"
 import {useCustomDispatch} from "../../customHook/customHook";
 import {useSelector} from "react-redux";
 import {RootState} from "../../bll/store";
-import {removeWeatherCard, updateCityWeatherCard} from "../../bll/slices/currentWeatherSlice";
+import {removeWeatherCard, updateWeatherCardId} from "../../bll/slices/currentWeatherSlice";
 
 
 export type WeatherCardPropsType = {
@@ -26,8 +25,9 @@ export const WeatherCard = ({
     const deleteOneCty = (cityId: number) => {
         dispatch(removeWeatherCard(cityId))
     }
-    const refreshOneCity = (city: CityType) => {
-        dispatch(updateCityWeatherCard(city))
+
+    const refreshOneCity = (id: number) => {
+        dispatch(updateWeatherCardId(id))
     }
 
     // const deleteOneCity = (cityId: number) => {
@@ -47,10 +47,11 @@ export const WeatherCard = ({
                             const Pressure = city.press
                             const SpeedWind = city.speed
                             const CityId = city.id
+
                             return (
                                 <div key={city.id}>
                                     <Card sx={{minWidth: 275, minHeight: 250, maxWidth: 350, maxHeight: 300}}>
-                                        <CardContent>
+                                        <CardContent className='Wrapper'>
                                             <Typography sx={{fontSize: 14}} color="text.secondary" gutterBottom>
                                                 Город: {City}, {Country}
                                             </Typography>
@@ -67,17 +68,17 @@ export const WeatherCard = ({
                                                 Сила и направление ветра: {SpeedWind}
                                             </Typography>
                                             <Typography sx={{fontSize: 14}} color="text.secondary" gutterBottom>
-                                                Последнее обновление данных: {moment().format('MMMM Do YYYY, h:mm:ss a')}
+                                                Последнее обновление данных: {city.time}
                                             </Typography>
                                         </CardContent>
                                         <CardActions>
-                                            <Button variant="contained" size="small" color={"warning"}
+                                            <Button variant="contained" size="small" color={"warning"} className='Button-Weather'
                                                     onClick={() => {
                                                         deleteOneCty(CityId)
                                                     }}>Delete</Button>
-                                            <Button variant="contained" size="small" color={"success"}
+                                            <Button variant="contained" size="small" color={"success"} className='Button-Weather'
                                                     onClick={() => {
-                                                        refreshOneCity(city)
+                                                        refreshOneCity(CityId)
                                                     }}>Refresh</Button>
                                         </CardActions>
                                     </Card>
