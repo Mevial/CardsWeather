@@ -16,7 +16,7 @@ type AddItemFormPropsType = {
 
 export const AddItemForm = React.memo(function ({addItem}: AddItemFormPropsType) {
     console.log('AddItemForm called')
-    const disatch = useCustomDispatch()
+    const dispatch = useCustomDispatch()
     let [title, setTitle] = useState('')
     let [error, setError] = useState<string | null>(null)
     const cities = useSelector<RootState, CityType[]>(state => state.currentWeatherSliceReducer.cities)
@@ -31,7 +31,6 @@ export const AddItemForm = React.memo(function ({addItem}: AddItemFormPropsType)
             setError('Title is required');
         }
     }
-
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
     }
@@ -46,9 +45,9 @@ export const AddItemForm = React.memo(function ({addItem}: AddItemFormPropsType)
         }
     }
     const changeHandlerRadio = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-        disatch(changeToggle(e.currentTarget.checked))
+        dispatch(changeToggle(e.currentTarget.checked))
 
-    }, [disatch])
+    }, [dispatch])
 
     useEffect(() => {
         let id: any
@@ -59,10 +58,10 @@ export const AddItemForm = React.memo(function ({addItem}: AddItemFormPropsType)
             id = setInterval(() => {
                 console.log('tick')
                 for (let i = 0; i >= cities.length - 1; i++) {
-                    disatch(updateWeatherCardId((cities[i].id)))
-                    return
+                    dispatch(updateWeatherCardId((cities[i].id)))
+                    return () => clearInterval(id)
                 }
-            }, 5000)
+            }, 1000)
 
 
             return () => clearInterval(id)
