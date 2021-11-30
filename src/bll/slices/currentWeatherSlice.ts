@@ -132,12 +132,7 @@ export const fetchCurrentWeather =
             dispatch(currentWeatherSlice.actions.fetchCurrentWeather()) //dispatch action fetchCurrent(status=true)
 
             const res = await weatherAPI.getCurrentWeather(payload) //have response
-            //1.Достать id
-            //2.Достать id c Redux
-            //3.Если в списке id с редакса такого id нет, запросцессить как обычно
             console.log(res.data.id)
-            // const ID = useSelector<RootState>((state) => state.currentWeatherSliceReducer.cities)
-            // console.log(ID)
             // @ts-ignore
             dispatch(addCityWeatherCard({
                 data: {

@@ -9,6 +9,7 @@ import {RootState} from "../../bll/store";
 import {CityType} from "../../types/types";
 import {changeToggle, updateWeatherCardId} from "../../bll/slices/currentWeatherSlice";
 
+
 type AddItemFormPropsType = {
     addItem: (title: string) => void
     updateData: () => void;
