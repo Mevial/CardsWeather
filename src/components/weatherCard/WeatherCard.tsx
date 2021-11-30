@@ -14,7 +14,6 @@ export type WeatherCardPropsType = {
     weather: Weather
 }
 
-
 export const WeatherCard = ({
                                 weather,
                             }: WeatherCardPropsType) => {
@@ -27,9 +26,11 @@ export const WeatherCard = ({
         localStorage.setItem('value', JSON.stringify(newCities));
         dispatch(removeWeatherCard(cityId))
     }
+
     const refreshOneCity = (id: number) => {
         dispatch(updateWeatherCardId(id))
     }
+
     return (
         <>
             {cities.length === 0

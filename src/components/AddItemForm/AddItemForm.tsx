@@ -9,12 +9,9 @@ import {RootState} from "../../bll/store";
 import {CityType} from "../../types/types";
 import {changeToggle, updateWeatherCardId} from "../../bll/slices/currentWeatherSlice";
 
-
 type AddItemFormPropsType = {
     addItem: (title: string) => void
-    updateData: () => void;
 }
-
 export const AddItemForm = React.memo(function ({addItem}: AddItemFormPropsType) {
     console.log('AddItemForm called')
     const dispatch = useCustomDispatch()
@@ -41,9 +38,8 @@ export const AddItemForm = React.memo(function ({addItem}: AddItemFormPropsType)
             setError(null);
 
         }
-        if ('click') {
-            addItemHandler();
-        }
+        addItemHandler();
+
     }
     const changeHandlerRadio = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         dispatch(changeToggle(e.currentTarget.checked))

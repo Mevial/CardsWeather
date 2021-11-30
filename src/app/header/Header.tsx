@@ -16,9 +16,7 @@ export const Header = () => {
     return (
         <div className={styles.header}>
             <div>
-                Header(Тут сделать инпут + автообновление)
-                <AddItemForm addItem={addCity} updateData={() => {
-                }}/>
+                <AddItemForm addItem={addCity}/>
             </div>
         </div>
     )

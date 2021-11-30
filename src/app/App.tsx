@@ -21,9 +21,8 @@ function App() {
     const {weather} = useCustomSelector(selectCurrentWeatherData)
     return (
         <div className={style.app}>
-            Это приложение должно работать с погодой
             <Header/>
-            <div className={style.Cards}> <WeatherCard weather={weather}/></div>
+            <div className={style.Cards}><WeatherCard weather={weather}/></div>
 
         </div>
     );
