@@ -23,13 +23,13 @@ export const WeatherCard = ({
     const cities = useSelector<RootState, CityType[]>(state => state.currentWeatherSliceReducer.cities)
 
     const deleteOneCty = (cityId: number) => {
+        const newCities = cities.filter((city) => cityId !== city.id);
+        localStorage.setItem('value', JSON.stringify(newCities));
         dispatch(removeWeatherCard(cityId))
     }
     const refreshOneCity = (id: number) => {
         dispatch(updateWeatherCardId(id))
     }
-
-
     return (
         <>
             {cities.length === 0
@@ -67,12 +67,10 @@ export const WeatherCard = ({
                                         </CardContent>
                                         <CardActions>
                                             <Button variant="contained" size="small" color={"warning"}
-                                                    className='Button-Weather'
                                                     onClick={() => {
                                                         deleteOneCty(CityId)
                                                     }}>Delete</Button>
                                             <Button variant="contained" size="small" color={"success"}
-                                                    className='Button-Weather'
                                                     onClick={() => {
                                                         refreshOneCity(CityId)
                                                     }}>Refresh</Button>

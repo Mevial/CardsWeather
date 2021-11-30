@@ -7,6 +7,13 @@
     color: #e5e5e5;
 }
 
+.Cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    row-gap: 40px;
+    padding: 50px;
+}
 
 .header {
     display: flex;

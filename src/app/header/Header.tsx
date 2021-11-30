@@ -12,18 +12,6 @@ export const Header = () => {
     console.log(cities)
     const addCity = (title: string) => {
         dispatch(fetchCurrentWeather(title))
-        // // @ts-ignore
-        // dispatch(addCityWeatherCard({
-        //     data: {
-        //         name: 'Brest',
-        //         id: 0,
-        //         speed: 0,
-        //         humidity: 0,
-        //         temp: 0,
-        //         country: 'Rb',
-        //         press: 0,
-        //     }
-        // }))
     }
     return (
         <div className={styles.header}>

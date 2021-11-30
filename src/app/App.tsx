@@ -2,29 +2,29 @@ import React, {useEffect} from 'react';
 import style from './App.module.css';
 import {Header} from "./header/Header";
 import {WeatherCard} from "../components/weatherCard/WeatherCard";
-import {selectCurrentWeatherData, useCustomDispatch, useCustomSelector} from "../customHook/customHook";
-import {fetchCurrentWeather} from "../bll/slices/currentWeatherSlice";
+import {selectCurrentWeatherData, useCustomSelector} from "../customHook/customHook";
+import {setItemLocalStorage} from "../bll/slices/currentWeatherSlice";
+import {useDispatch} from "react-redux";
+import {CityType} from "../types/types";
 
 
 function App() {
-
-    const dispatch = useCustomDispatch();
+    const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(fetchCurrentWeather('Minsk'))
+        const result = localStorage.getItem("value")
+        if (result) {
+            const testValue: Array<CityType> = JSON.parse(result)
+            dispatch(setItemLocalStorage({testValue}))
+        }
     }, [])
 
-        const {weather} = useCustomSelector(selectCurrentWeatherData)
-
-    // const [lat, setLat] = useState([]);
-    // const [long, setLong] = useState([]);
-    // const [data, setData] = useState([]);
-
-
+    const {weather} = useCustomSelector(selectCurrentWeatherData)
     return (
         <div className={style.app}>
             Это приложение должно работать с погодой
             <Header/>
-            <WeatherCard weather={weather}/>
+            <div className={style.Cards}> <WeatherCard weather={weather}/></div>
+
         </div>
     );
 }

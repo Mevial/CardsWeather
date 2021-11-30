@@ -65,6 +65,9 @@ const currentWeatherSlice = createSlice({
     name: 'current-weather',
     initialState,
     reducers: {
+        setItemLocalStorage(state, action: PayloadAction<{ testValue: Array<CityType> }>) {
+            state.cities = [...action.payload.testValue]
+        },
         changeToggle(state, action: PayloadAction<boolean>) {
             state.toggle = action.payload
         },
@@ -99,6 +102,7 @@ const currentWeatherSlice = createSlice({
             if (!isExistingCityId) {
                 state.cities.unshift(action.payload.data)
             }
+            localStorage.setItem("value", JSON.stringify([...state.cities]))
         },
         updateCityWeatherCard(state, action: PayloadAction<CityType>) {
             const newCityId = action.payload.id
@@ -107,15 +111,7 @@ const currentWeatherSlice = createSlice({
                 state.cities[cityIndex] = {...action.payload}
                 console.log(action.payload)
             }
-        },
-
-        // updateTaskAC(state, action: PayloadAction<{ taskId: string, model: UpdateDomainTaskModelType, todolistId: string }>) {
-        //     const tasks = state[action.payload.todolistId]
-        //     const index = tasks.findIndex(t => t.id === action.payload.taskId)
-        //     if (index > -1) {
-        //         tasks[index] = {...tasks[index], ...action.payload.model}
-        //     }
-        // },
+        }
     },
 });
 
@@ -123,7 +119,8 @@ export const {
     removeWeatherCard,
     addCityWeatherCard,
     updateCityWeatherCard,
-    changeToggle
+    changeToggle,
+    setItemLocalStorage
 } = currentWeatherSlice.actions
 
 export default currentWeatherSlice.reducer
@@ -138,11 +135,9 @@ export const fetchCurrentWeather =
             //1.Достать id
             //2.Достать id c Redux
             //3.Если в списке id с редакса такого id нет, запросцессить как обычно
-
             console.log(res.data.id)
             // const ID = useSelector<RootState>((state) => state.currentWeatherSliceReducer.cities)
             // console.log(ID)
-
             // @ts-ignore
             dispatch(addCityWeatherCard({
                 data: {

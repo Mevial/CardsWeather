@@ -22,7 +22,7 @@ export const AddItemForm = React.memo(function ({addItem}: AddItemFormPropsType)
     const cities = useSelector<RootState, CityType[]>(state => state.currentWeatherSliceReducer.cities)
     const toggle = useSelector<RootState, boolean>(state => state.currentWeatherSliceReducer.toggle)
     console.log('c', cities)
-    // const [off, setOff] = useState<boolean>(false);
+
     const addItemHandler = () => {
         if (title.trim() !== '') {
             addItem(title);
@@ -31,10 +31,10 @@ export const AddItemForm = React.memo(function ({addItem}: AddItemFormPropsType)
             setError('Title is required');
         }
     }
+
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
     }
-
     const onFormSubmit = (e: FormEvent<HTMLDivElement>) => {
         if (error !== null) {
             setError(null);
