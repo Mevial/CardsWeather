@@ -96,11 +96,11 @@ const currentWeatherSlice = createSlice({
                 state.cities.splice(index, 1)
             }
         },
-        addCityWeatherCard(state, action: PayloadAction<AxiosResponse<CityType>>) {
-            const newCityId = action.payload.data.id
+        addCityWeatherCard(state, action: PayloadAction<CityType>) {
+            const newCityId = action.payload.id
             const isExistingCityId = state.cities.find(cityId => cityId.id === newCityId)
             if (!isExistingCityId) {
-                state.cities.unshift(action.payload.data)
+                state.cities.unshift(action.payload)
             }
             localStorage.setItem("value", JSON.stringify([...state.cities]))
         },
@@ -133,18 +133,16 @@ export const fetchCurrentWeather =
 
             const res = await weatherAPI.getCurrentWeather(payload) //have response
             console.log(res.data.id)
-            // @ts-ignore
+
             dispatch(addCityWeatherCard({
-                data: {
-                    name: res.data.name,
-                    id: res.data.id,
-                    country: res.data.sys.country,
-                    temp: res.data.main.temp,
-                    humidity: res.data.main.humidity,
-                    press: res.data.main.pressure,
-                    speed: res.data.wind.speed,
-                    time: moment().format('MMMM Do YYYY, h:mm:ss a')
-                }
+                name: res.data.name,
+                id: res.data.id,
+                country: res.data.sys.country,
+                temp: res.data.main.temp,
+                humidity: res.data.main.humidity,
+                press: res.data.main.pressure,
+                speed: res.data.wind.speed,
+                time: moment().format('MMMM Do YYYY, h:mm:ss a')
             }))
             console.log(res.data)
             if (res.status === 200) {
