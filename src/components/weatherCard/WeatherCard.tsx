@@ -30,7 +30,6 @@ export const WeatherCard = ({
     const refreshOneCity = (id: number) => {
         dispatch(updateWeatherCardId(id))
     }
-
     return (
         <>
             {cities.length === 0

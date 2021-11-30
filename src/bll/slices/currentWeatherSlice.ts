@@ -5,6 +5,8 @@ import {CityType, Weather} from "../../types/types";
 import {AxiosResponse} from "axios";
 import moment from "moment";
 
+const ZERO_NUMBER = 0
+const VOID_STRING = ''
 
 type CurrentWeather = {
     cities: CityType[],
@@ -22,41 +24,41 @@ const initialState: CurrentWeather = {
     cities: [],
     weather: {
         clouds: {
-            all: 0,
+            all: ZERO_NUMBER,
         },
         coord: {
-            lon: 0,
-            lat: 0,
+            lon: ZERO_NUMBER,
+            lat: ZERO_NUMBER,
         },
-        dt: 0,
-        id: 0,
+        dt: ZERO_NUMBER,
+        id: ZERO_NUMBER,
         main: {
-            temp: 0,
-            pressure: 0,
-            humidity: 0,
-            feels_like: 0,
-            temp_max: 0,
-            temp_min: 0,
+            temp: ZERO_NUMBER,
+            pressure: ZERO_NUMBER,
+            humidity: ZERO_NUMBER,
+            feels_like: ZERO_NUMBER,
+            temp_max: ZERO_NUMBER,
+            temp_min: ZERO_NUMBER,
         },
-        name: '',
+        name: VOID_STRING,
         sys: {
-            id: 0,
-            country: '',
-            sunrise: 0,
-            type: 0,
-            sunset: 0,
+            id: ZERO_NUMBER,
+            country: VOID_STRING,
+            sunrise: ZERO_NUMBER,
+            type: ZERO_NUMBER,
+            sunset: ZERO_NUMBER,
         },
         wind: {
-            speed: 0,
-            deg: 0,
-            gust: 0,
+            speed: ZERO_NUMBER,
+            deg: ZERO_NUMBER,
+            gust: ZERO_NUMBER,
         },
 
     },
     isLoading: false,
     response: {
-        status: 0,
-        message: '',
+        status: ZERO_NUMBER,
+        message: VOID_STRING,
     },
     toggle: false
 };
