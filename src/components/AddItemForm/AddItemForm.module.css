@@ -1,0 +1,16 @@
+.Container{
+    height: 140px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.CityForm{
+    display: flex;
+    align-items: center;
+}
+@media (max-width: 523px) {
+    .Container{
+        flex-direction: column;
+    }
+}

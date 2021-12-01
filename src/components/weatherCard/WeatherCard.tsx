@@ -4,14 +4,12 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {CityType} from "../../types/types";
-import {useCustomDispatch} from "../../customHook/customHook";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../bll/store";
 import {removeWeatherCard, updateWeatherCardId} from "../../bll/slices/currentWeatherSlice";
 
 export const WeatherCard = () => {
-
-    const dispatch = useCustomDispatch();
+    const dispatch = useDispatch();
     const cities = useSelector<RootState, CityType[]>(state => state.currentWeatherSliceReducer.cities)
 
     const deleteOneCty = (cityId: number) => {
@@ -58,7 +56,7 @@ export const WeatherCard = () => {
                                                 Последнее обновление данных: {city.time}
                                             </Typography>
                                         </CardContent>
-                                        <CardActions>
+                                        <CardActions style={{justifyContent: 'center'}}>
                                             <Button variant="contained" size="small" color={"warning"}
                                                     onClick={() => {
                                                         deleteOneCty(CityId)

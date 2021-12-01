@@ -6,7 +6,6 @@ import {setItemLocalStorage} from "../bll/slices/currentWeatherSlice";
 import {useDispatch} from "react-redux";
 import {CityType} from "../types/types";
 
-
 function App() {
     const dispatch = useDispatch()
     useEffect(() => {
@@ -15,7 +14,7 @@ function App() {
             const testValue: Array<CityType> = JSON.parse(result)
             dispatch(setItemLocalStorage({testValue}))
         }
-    }, [])
+    }, [dispatch])
 
     return (
         <div className={style.app}>

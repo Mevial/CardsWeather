@@ -112,7 +112,6 @@ const currentWeatherSlice = createSlice({
             const cityIndex = state.cities.findIndex(cityId => cityId.id === newCityId)
             if (cityIndex > -1) {
                 state.cities[cityIndex] = {...action.payload}
-                console.log(action.payload)
             }
         }
     },
@@ -135,7 +134,6 @@ export const fetchCurrentWeather =
             dispatch(currentWeatherSlice.actions.fetchCurrentWeather()) //dispatch action fetchCurrent(status=true)
 
             const res = await weatherAPI.getCurrentWeather(payload) //have response
-            console.log(res.data.id)
 
             dispatch(addCityWeatherCard({
                 name: res.data.name,
@@ -147,7 +145,6 @@ export const fetchCurrentWeather =
                 speed: res.data.wind.speed,
                 time: moment().format('MMMM Do YYYY, h:mm:ss a')
             }))
-            console.log(res.data)
             if (res.status === 200) {
                 dispatch(currentWeatherSlice.actions.fetchCurrentWeatherSuccess(res))
 
@@ -164,7 +161,6 @@ export const updateWeatherCardId =
         try {
             dispatch(currentWeatherSlice.actions.fetchCurrentWeather()) //dispatch action fetchCurrent(status=true)
             const res = await weatherAPI.getCurrentWeatherById(cityId) //have response
-            console.log(res.data.id)
             dispatch(updateCityWeatherCard({
                 name: res.data.name,
                 id: res.data.id,
@@ -175,7 +171,6 @@ export const updateWeatherCardId =
                 speed: res.data.wind.speed,
                 time: moment().format('MMMM Do YYYY, h:mm:ss a')
             }))
-            console.log(res.data)
             if (res.status === 200) {
                 dispatch(currentWeatherSlice.actions.fetchCurrentWeatherSuccess(res))
 
