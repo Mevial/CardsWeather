@@ -4,6 +4,7 @@ import {weatherAPI} from "../../dal/weatherAPI";
 import {CityType, Weather} from "../../types/types";
 import {AxiosResponse} from "axios";
 import moment from "moment";
+import {cityAPI} from "../../dal/cityAPI";
 
 const ZERO_NUMBER = 0
 const VOID_STRING = ''
@@ -154,12 +155,10 @@ export const fetchCurrentWeather =
                 dispatch(currentWeatherSlice.actions.fetchCurrentWeatherError(res))
             }
         } catch (error) {
-//error.request - найти статус код, диспатчим и прокидываем в компоненту
             console.log((error))
         }
 
     };
-
 export const updateWeatherCardId =
     (cityId: number) => async (dispatch: AppDispatch) => {
         try {
@@ -184,11 +183,21 @@ export const updateWeatherCardId =
                 dispatch(currentWeatherSlice.actions.fetchCurrentWeatherError(res))
             }
         } catch (error) {
-//error.request - найти статус код, диспатчим и прокидываем в компоненту
             console.log((error))
         }
 
     };
 
+export const getCityTC =
+    () => async (dispatch: AppDispatch) => {
+        try {
+            dispatch(currentWeatherSlice.actions.fetchCurrentWeather()) //dispatch action fetchCurrent(status=true)
 
+            const res = await cityAPI.getAllCity() //have response
+            console.log(res.data)
+        } catch (error) {
+            console.log((error))
+        }
+
+    };
 

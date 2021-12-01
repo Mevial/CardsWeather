@@ -3,20 +3,13 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import {CityType, Weather} from "../../types/types";
+import {CityType} from "../../types/types";
 import {useCustomDispatch} from "../../customHook/customHook";
 import {useSelector} from "react-redux";
 import {RootState} from "../../bll/store";
 import {removeWeatherCard, updateWeatherCardId} from "../../bll/slices/currentWeatherSlice";
 
-
-export type WeatherCardPropsType = {
-    weather: Weather
-}
-
-export const WeatherCard = ({
-                                weather,
-                            }: WeatherCardPropsType) => {
+export const WeatherCard = () => {
 
     const dispatch = useCustomDispatch();
     const cities = useSelector<RootState, CityType[]>(state => state.currentWeatherSliceReducer.cities)
@@ -59,7 +52,7 @@ export const WeatherCard = ({
                                                 Атмосферное давление: {Pressure} hpa
                                             </Typography>
                                             <Typography sx={{fontSize: 14}} color="text.secondary" gutterBottom>
-                                                Сила и направление ветра: {SpeedWind}
+                                                Сила и направление ветра: {SpeedWind} М/C
                                             </Typography>
                                             <Typography sx={{fontSize: 14}} color="text.secondary" gutterBottom>
                                                 Последнее обновление данных: {city.time}
