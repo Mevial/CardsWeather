@@ -50,7 +50,7 @@ export const WeatherCard = () => {
                                                 Атмосферное давление: {Pressure} hpa
                                             </Typography>
                                             <Typography sx={{fontSize: 14}} color="text.secondary" gutterBottom>
-                                                Сила и направление ветра: {SpeedWind} М/C
+                                                Сила ветра: {SpeedWind} М/C
                                             </Typography>
                                             <Typography sx={{fontSize: 14}} color="text.secondary" gutterBottom>
                                                 Последнее обновление данных: {city.time}

@@ -61,7 +61,7 @@ export default function Asynchronous() {
     renderInput={(params) => (
         <TextField
             {...params}
-    label="Asynchronous"
+    label="Work in progress..."
     InputProps={{
     ...params.InputProps,
             endAdornment: (
@@ -77,7 +77,6 @@ export default function Asynchronous() {
 );
 }
 
-// Top films as rated by IMDb users. http://www.imdb.com/chart/top
     const topCity = [
         {title: 'Minsk'},
         {title: 'Brest'},

@@ -8,6 +8,7 @@ import {RootState} from "../../bll/store";
 import {CityType} from "../../types/types";
 import {changeToggle, updateWeatherCardId} from "../../bll/slices/currentWeatherSlice";
 import styles from './AddItemForm.module.css'
+import Asynchronous from "../SearchInput/searchInput";
 type AddItemFormPropsType = {
     addItem: (title: string) => void
 }
@@ -76,6 +77,6 @@ export const AddItemForm = React.memo(function ({addItem}: AddItemFormPropsType)
         <Button variant="contained" size={"small"}>update every 5sec <Checkbox
             color="secondary"
             onChange={changeHandlerRadio}/></Button>
-
+<Asynchronous/>
     </div>
 })
