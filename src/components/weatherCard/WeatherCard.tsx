@@ -7,7 +7,7 @@ import {CityType} from "../../types/types";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../bll/store";
 import {removeWeatherCard, updateWeatherCardId} from "../../bll/slices/currentWeatherSlice";
-
+import styles from './WeatherCard.module.css'
 export const WeatherCard = () => {
     const dispatch = useDispatch();
     const cities = useSelector<RootState, CityType[]>(state => state.currentWeatherSliceReducer.cities)
@@ -24,7 +24,7 @@ export const WeatherCard = () => {
     return (
         <>
             {cities.length === 0
-                ? (<div>you have no cities saved</div>)
+                ? (<span className={styles.textNameWithoutCards}>you have no cities saved</span>)
                 : (cities.map((city) => {
                             const City = city.name
                             const Country = city.country

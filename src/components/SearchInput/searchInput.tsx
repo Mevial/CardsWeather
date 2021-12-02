@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import CircularProgress from '@mui/material/CircularProgress';
 
-interface Film {
+interface City {
     title: string;
 }
 
@@ -15,9 +15,8 @@ function sleep(delay = 0) {
 
 export default function Asynchronous() {
     const [open, setOpen] = React.useState(false);
-    const [options, setOptions] = React.useState<readonly Film[]>([]);
+    const [options, setOptions] = React.useState<readonly City[]>([]);
     const loading = open && options.length === 0;
-
     React.useEffect(() => {
         let active = true;
 
