@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/CardsWeather/static/css/main.47930b8c.chunk.css",
+    "main.js": "/CardsWeather/static/js/main.faaf6346.chunk.js",
+    "main.js.map": "/CardsWeather/static/js/main.faaf6346.chunk.js.map",
+    "runtime-main.js": "/CardsWeather/static/js/runtime-main.777dffd1.js",
+    "runtime-main.js.map": "/CardsWeather/static/js/runtime-main.777dffd1.js.map",
+    "static/js/2.ba886184.chunk.js": "/CardsWeather/static/js/2.ba886184.chunk.js",
+    "static/js/2.ba886184.chunk.js.map": "/CardsWeather/static/js/2.ba886184.chunk.js.map",
+    "static/js/3.3d91eb6a.chunk.js": "/CardsWeather/static/js/3.3d91eb6a.chunk.js",
+    "static/js/3.3d91eb6a.chunk.js.map": "/CardsWeather/static/js/3.3d91eb6a.chunk.js.map",
+    "index.html": "/CardsWeather/index.html",
+    "static/css/main.47930b8c.chunk.css.map": "/CardsWeather/static/css/main.47930b8c.chunk.css.map",
+    "static/js/2.ba886184.chunk.js.LICENSE.txt": "/CardsWeather/static/js/2.ba886184.chunk.js.LICENSE.txt",
+    "static/media/App.module.css": "/CardsWeather/static/media/weatherMount.8c51949f.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.777dffd1.js",
+    "static/js/2.ba886184.chunk.js",
+    "static/css/main.47930b8c.chunk.css",
+    "static/js/main.faaf6346.chunk.js"
+  ]
+}
